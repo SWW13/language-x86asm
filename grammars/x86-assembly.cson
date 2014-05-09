@@ -1,0 +1,157 @@
+'fileTypes': [
+  'asm'
+  's'
+]
+'name': 'x86 Assembly'
+'patterns': [
+  {
+    'match': '[;#].*$'
+    'name': 'comment.line'
+  }
+  {
+    'begin': '^\\s*[\\#%]\\s*if\\s+0\\b'
+    'end': '^\\s*[\\#%]\\s*endif\\b'
+    'name': 'comment.preprocessor'
+  }
+  {
+    'begin': '/\\*'
+    'end': '\\*/'
+    'name': 'comment.block'
+  }
+  {
+    'match': '(?i)\\b(dword|qword|tword|db|dw|dd|dq|dt|do|dy|resb|resw|resd|resq|rest|reso|resy|incbin|equ|times)\\b'
+    'name': 'support.type.asm'
+  }
+  {
+    'match': '\\.(data|bss|text)$'
+    'name': 'string.section'
+  }
+  {
+    'begin': '["\']'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.asm'
+    'end': '["\']'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.asm'
+    'name': 'string.quoted.asm'
+    'patterns': [
+      {
+        'include': '#string_escaped_char'
+      }
+      {
+        'include': '#string_placeholder'
+      }
+    ]
+  }
+  {
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.c'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.c'
+    'name': 'string.quoted.single.c'
+    'patterns': [
+      {
+        'include': '#string_escaped_char'
+      }
+    ]
+  }
+  {
+    'begin': '^\\s*[#%]\\s*(error|warning)\\b'
+    'captures':
+      '1':
+        'name': 'keyword.control.import.error.c'
+    'end': '$'
+    'name': 'meta.preprocessor.diagnostic.c'
+    'patterns': [
+      {
+        'match': '(?>\\\\\\s*\\n)'
+        'name': 'punctuation.separator.continuation.c'
+      }
+    ]
+  }
+  {
+    'begin': '^\\s*[#%]\\s*(include|import)\\b\\s+'
+    'captures':
+      '1':
+        'name': 'keyword.control.import.include.c'
+    'end': '(?=(?://|/\\*))|$'
+    'name': 'meta.preprocessor.c.include'
+    'patterns': [
+      {
+        'match': '(?>\\\\\\s*\\n)'
+        'name': 'punctuation.separator.continuation.c'
+      }
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.c'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.c'
+        'name': 'string.quoted.double.include.c'
+      }
+      {
+        'begin': '<'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.c'
+        'end': '>'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.c'
+        'name': 'string.quoted.other.lt-gt.include.c'
+      }
+    ]
+  }
+  {
+    'begin': '^\\s*[%#]\\s*(define|defined|elif|else|if|ifdef|ifndef|line|pragma|undef|endif)\\b'
+    'captures':
+      '1':
+        'name': 'keyword.control.import.c'
+    'end': '(?=(?://|/\\*))|$'
+    'name': 'meta.preprocessor.c'
+    'patterns': [
+      {
+        'match': '(?>\\\\\\s*\\n)'
+        'name': 'punctuation.separator.continuation.c'
+      }
+    ]
+  }
+  {
+    'match': '\\b(aaa|aad|aam|aas|adc|add|and|arpl|bound|bsf|bsr|bswap|bt|btc|btr|bts|call|cbw|cdq|clc|cld|cli|clts|cmc|cmp|cmps|cmpxchg|cwd|cwde|daa|das|dec|div|enter|esc|hlt|idiv|imul|in|inc|ins|int|into|invd|invlpg|iret|iretd|ja|jae|jb|jbe|jc|jcxz|je|jecxz|jg|jge|jl|jle|jmp|jna|jnae|jnb|jnbe|jnc|jne|jng|jnge|jnl|jnle|jno|jnp|jns|jnz|jo|jp|jpe|jpo|js|jz|lahf|lar|lds|lea|leave|les|lfs|lgdt|lidt|lgs|lldt|lmsw|lock|lods|loop|loope|loopz|loopnz|loopne|lsl|lss|ltr|mov|movs|movsx|movzx|mul|near|neg|nop|not|or|out|outs|pop|popa|popad|popf|popfd|push|pusha|pushad|pushf|pushfd|rcl|rcr|rep|repe|repz|repne|repnz|ret|retf|rol|ror|sahf|sal|sar|sbb|scas|section|setae|setnb|setb|setnae|setbe|setna|sete|setz|setne|setnz|setl|setnge|setge|setng|setle|setng|setg|setnle|sets|setns|setc|setnc|seto|setno|setp|setpe|setnp|setpo|sgdt|sidt|shl|shld|shr|shrd|sldt|smsw|stc|std|sti|stos|str|sub|test|verr|verw|wait|fwait|wait|fwait|wbinvd|xchg|xlat|xlatb|xor)(l|w|b)?\\b'
+    'name': 'keyword.mnemonic'
+  }
+  {
+    'match': '^\\s*\\.?\\w+:\\s*(?=$|;)'
+    'name': 'entity.name.label'
+  }
+  {
+    'match': '\\$[0-9a-f]+\\b'
+    'name': 'constant.numeric.literal'
+  }
+  {
+    'match': '\\b[0-9]+\\b'
+    'name': 'constant.numeric.dec'
+  }
+  {
+    'match': '\\b([0-9a-fA-F]+h?|0x[0-9a-fA-F]+)\\b'
+    'name': 'constant.numeric.hex'
+  }
+  {
+    'match': '^\\.?(globl|global)\\b'
+    'name': 'entity.directive'
+  }
+  {
+    'match': '\\b%?(ip|eip|eax|ebx|ecx|edx|edi|esi|ebp|esp|ax|bx|cx|dx|di|si|bp|sp|ah|al|bh|bl|ch|cl|dh|dl|ax|bx|cx|dx|cs|ds|ss|es|fs|gs|cr0|cr2|cr3|db0|db1|db2|db3|db6|db7|tr6|tr7|st)+\\b'
+    'name': 'storage.register'
+  }
+]
+'scopeName': 'source.asm.x86'
