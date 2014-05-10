@@ -130,6 +130,10 @@
     'name': 'keyword.mnemonic'
   }
   {
+    'match': '\\b%?(ip|eip|eax|ebx|ecx|edx|edi|esi|ebp|esp|ax|bx|cx|dx|di|si|bp|sp|ah|al|bh|bl|ch|cl|dh|dl|ax|bx|cx|dx|cs|ds|ss|es|fs|gs|cr0|cr2|cr3|db0|db1|db2|db3|db6|db7|tr6|tr7|st)+\\b'
+    'name': 'storage.register'
+  }
+  {
     'match': '^\\s*\\.?\\w+:\\s*(?=$|;)'
     'name': 'entity.name.label'
   }
@@ -148,10 +152,6 @@
   {
     'match': '^\\.?(globl|global)\\b'
     'name': 'entity.directive'
-  }
-  {
-    'match': '\\b%?(ip|eip|eax|ebx|ecx|edx|edi|esi|ebp|esp|ax|bx|cx|dx|di|si|bp|sp|ah|al|bh|bl|ch|cl|dh|dl|ax|bx|cx|dx|cs|ds|ss|es|fs|gs|cr0|cr2|cr3|db0|db1|db2|db3|db6|db7|tr6|tr7|st)+\\b'
-    'name': 'storage.register'
   }
 ]
 'scopeName': 'source.asm.x86'
