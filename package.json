@@ -1,6 +1,6 @@
 {
   "name": "language-x86asm",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Adds syntax highlighting to x86 asm files in Atom.",
   "repository": "https://github.com/SWW13/language-x86asm",
   "license": "GPLv3",
