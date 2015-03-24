@@ -134,7 +134,7 @@
     'name': 'storage.register'
   }
   {
-    'match': '^\\s*\\.?\\w+:\\s*(?=$|;|\\.)|\\s*(?<=\\S\\s)\\$?[_a-zA-Z]\\w*(?=$|,)|\\s*\\.(?=\\s+)'
+    'match': '^\\s*\\.?\\w+:\\s*(?=$|;)'
     'name': 'entity.name.label'
   }
   {
