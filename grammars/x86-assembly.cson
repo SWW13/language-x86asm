@@ -27,11 +27,11 @@
     'name': 'string.section'
   }
   {
-    'begin': '["\']'
+    'begin': '"'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.asm'
-    'end': '["\']'
+    'end': '"'
     'endCaptures':
       '0':
         'name': 'punctuation.definition.string.end.asm'
