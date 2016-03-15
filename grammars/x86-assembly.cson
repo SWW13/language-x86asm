@@ -1,3 +1,4 @@
+'scopeName': 'source.asm.x86'
 'fileTypes': [
   'asm'
   's'
@@ -158,4 +159,3 @@
       'name': 'keyword.operator.artihmetic'
   }
 ]
-'scopeName': 'source.asm.x86'
