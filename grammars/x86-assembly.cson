@@ -1,6 +1,7 @@
 'scopeName': 'source.asm.x86'
 'fileTypes': [
   'asm'
+  'inc'
   's'
 ]
 'name': 'x86 Assembly'
