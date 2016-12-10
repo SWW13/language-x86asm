@@ -1,6 +1,6 @@
 {
   "name": "language-x86asm",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Adds syntax highlighting to x86 asm files in Atom.",
   "keywords": [
     "asm",
